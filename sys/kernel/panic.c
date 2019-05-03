@@ -51,6 +51,8 @@ void panic(int32_t cause)
 	case PANIC_CANT_PLACE_RT:	kprintf("can't place task on real time queue"); break;
 	case PANIC_CANT_SWAP:		kprintf("can't swap tasks on queue"); break;
 	case PANIC_NUTS_SEM:		kprintf("insane semaphore"); break;
+	case PANIC_CANT_PLACE_AP:		kprintf("NAO PODE ADICIONAR TAREFA NA FILA APERIODICA"); break; //ADICIONADO POR NOS
+	case PANIC_NO_TASKS_AP:		kprintf("SEM TAREFAS NA FILA APERIODICA"); break; //ADICIONADO POR NOS
 	default:			kprintf("unknown error"); break;
 	}
 	printf(" -> system halted.\n");

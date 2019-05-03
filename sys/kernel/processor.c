@@ -86,7 +86,8 @@ int32_t hf_cpuload(uint16_t id)
 				if (krnl_task2->period)
 					s += krnl_task2->rtjobs;
 				else
-					s += krnl_task2->bgjobs;
+					if(krnl_task2->capacity > 0) s += krnl_task2->apjobs; //ADICIONADO POR NOS: adiciona 1 no contador de tarefas aperiodicas
+					else s += krnl_task2->bgjobs;
 			}
 		}
 	}
@@ -96,7 +97,8 @@ int32_t hf_cpuload(uint16_t id)
 			if (krnl_tcb[id].period)
 				n = (krnl_tcb[id].rtjobs * 100) / s;
 			else
-				n = (krnl_tcb[id].bgjobs * 100) / s;
+				if(krnl_tcb[id].capacity > 0) n = (krnl_tcb[id].apjobs * 100) / s; //ADICIONADO POR NOS: calcula a porcentagem
+				else n = (krnl_tcb[id].bgjobs * 100) / s;
 			
 			return n;
 		}

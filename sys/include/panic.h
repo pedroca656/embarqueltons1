@@ -13,6 +13,8 @@
 #define PANIC_CANT_PLACE_RT		0x0b
 #define PANIC_CANT_SWAP			0x0c
 #define PANIC_NUTS_SEM			0x0d
+#define PANIC_CANT_PLACE_AP		0x0e //ADICIONADO POR NOS: Escolhido E pois era o proximo livre da sequencia
+#define PANIC_NO_TASKS_AP		0x0f //ADICIONADO POR NOS: mesma coisa de cima
 #define PANIC_UNKNOWN			0xff
 
 void panic(int32_t cause);

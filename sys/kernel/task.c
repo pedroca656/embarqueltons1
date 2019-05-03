@@ -127,7 +127,8 @@ int32_t hf_jobs(uint16_t id)
 			if (krnl_tcb[id].period)
 				return krnl_tcb[id].rtjobs;
 			else
-				return krnl_tcb[id].bgjobs;
+				if (krnl_tcb[id].capacity) return krnl_tcb[id].apjobs; //ADICIONADO POR NOS: retorna o contador de tarefas aperiodicas
+				else return krnl_tcb[id].bgjobs;
 		}
 	return ERR_INVALID_ID;
 }
@@ -254,6 +255,7 @@ int32_t hf_spawn(void (*task)(), uint16_t period, uint16_t capacity, uint16_t de
 	krnl_task->capacity_rem = capacity;
 	krnl_task->deadline_rem = deadline;
 	krnl_task->rtjobs = 0;
+	krnl_task->apjobs = 0; //ADICIONADO POR NOS: inicializando variavel
 	krnl_task->bgjobs = 0;
 	krnl_task->deadline_misses = 0;
 	krnl_task->ptask = task;
@@ -270,7 +272,12 @@ int32_t hf_spawn(void (*task)(), uint16_t period, uint16_t capacity, uint16_t de
 		if (period){
 			if (hf_queue_addtail(krnl_rt_queue, krnl_task)) panic(PANIC_CANT_PLACE_RT);
 		}else{
-			if (hf_queue_addtail(krnl_run_queue, krnl_task)) panic(PANIC_CANT_PLACE_RUN);
+			if (capacity > 0){ //ADICIONADO POR NOS: Significa que ela eh aperiodica
+				if (hf_queue_addtail(krnl_ap_queue, krnl_task)) panic(PANIC_CANT_PLACE_AP);
+			}
+			else { //nao eh aperiodica
+				if (hf_queue_addtail(krnl_run_queue, krnl_task)) panic(PANIC_CANT_PLACE_RUN);
+			}
 		}
 	}else{
 		krnl_task->ptask = 0;
@@ -461,13 +468,24 @@ int32_t hf_kill(uint16_t id)
 			if (hf_queue_swap(krnl_rt_queue, j, j-1)) panic(PANIC_CANT_SWAP);
 		krnl_task2 = hf_queue_remhead(krnl_rt_queue);
 	}else{
-		k = hf_queue_count(krnl_run_queue);
-		for (i = 0; i < k; i++)
-			if (hf_queue_get(krnl_run_queue, i) == krnl_task) break;
-		if (!k || i == k) panic(PANIC_NO_TASKS_RUN);
-		for (j = i; j > 0; j--)
-			if (hf_queue_swap(krnl_run_queue, j, j-1)) panic(PANIC_CANT_SWAP);
-		krnl_task2 = hf_queue_remhead(krnl_run_queue);
+		if(krnl_task->capacity){
+			k = hf_queue_count(krnl_ap_queue);
+			for (i = 0; i < k; i++)
+				if (hf_queue_get(krnl_ap_queue, i) == krnl_task) break;
+			if (!k || i == k) panic(PANIC_NO_TASKS_AP);
+			for (j = i; j > 0; j--)
+				if (hf_queue_swap(krnl_ap_queue, j, j-1)) panic(PANIC_CANT_SWAP);
+			krnl_task2 = hf_queue_remhead(krnl_ap_queue);
+		}
+		else{
+			k = hf_queue_count(krnl_run_queue);
+			for (i = 0; i < k; i++)
+				if (hf_queue_get(krnl_run_queue, i) == krnl_task) break;
+			if (!k || i == k) panic(PANIC_NO_TASKS_RUN);
+			for (j = i; j > 0; j--)
+				if (hf_queue_swap(krnl_run_queue, j, j-1)) panic(PANIC_CANT_SWAP);
+			krnl_task2 = hf_queue_remhead(krnl_run_queue);
+		}
 	}
 	if (!krnl_task2 || krnl_task2 != krnl_task) panic(PANIC_UNKNOWN_TASK_STATE);
 	

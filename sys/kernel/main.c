@@ -54,6 +54,7 @@ static void clear_tcb(void)
 		krnl_task->priority_rem = 0;
 		krnl_task->delay = 0;
 		krnl_task->rtjobs = 0;
+		krnl_task->apjobs = 0; //ADICIONADO POR NOS: zera o contador de tarefas aperiodicas
 		krnl_task->bgjobs = 0;
 		krnl_task->deadline_misses = 0;
 		krnl_task->period = 0;
@@ -76,6 +77,7 @@ static void clear_pcb(void)
 {
 	/* setup callbacks for the schedulers */
 	krnl_pcb.sched_rt = sched_rma;
+	krnl_pcb.sched_ap = sched_ap; //ADICIONADO POR NOS: definindo o metodo do escalonador ap
 	krnl_pcb.sched_be = sched_priorityrr;
 	/* and clear the process control block */
 	krnl_pcb.coop_cswitch = 0;
@@ -92,6 +94,9 @@ static void init_queues(void)
 	if (krnl_delay_queue == NULL) panic(PANIC_OOM);
 	krnl_rt_queue = hf_queue_create(MAX_TASKS);
 	if (krnl_rt_queue == NULL) panic(PANIC_OOM);
+	//ADICIONADO POR NOS: Inicia a fila de tarefas aperiodicas
+	krnl_ap_queue = hf_queue_create(MAX_TASKS);
+	if (krnl_ap_queue == NULL) panic(PANIC_OOM);
 }
 
 /**

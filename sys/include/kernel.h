@@ -34,6 +34,7 @@ struct tcb_entry {
 	uint8_t critical;				/*!< critical event, interrupt request */
 	uint32_t delay;					/*!< delay to enter in the run/RT queue */
 	uint32_t rtjobs;				/*!< total RT task jobs executed */
+	uint32_t apjobs;				/*!< ADICIONADO POR NOS: contador de tarefas aperiodicas */
 	uint32_t bgjobs;				/*!< total BE task jobs executed */
 	uint32_t deadline_misses;			/*!< task realtime deadline misses */
 	uint16_t period;				/*!< task period */
@@ -50,6 +51,7 @@ struct tcb_entry {
 
 struct pcb_entry {
 	int32_t (*sched_rt)();				/*!< pointer to the realtime scheduler */
+	int32_t (*sched_ap)();				/*!< ADICIONADO POR NOS: ponteiro para escalonador aperiodico */
 	int32_t (*sched_be)();				/*!< pointer to the best effort scheduler */
 	uint32_t coop_cswitch;				/*!< cooperative context switches */
 	uint32_t preempt_cswitch;			/*!< preeptive context switches */
@@ -72,5 +74,6 @@ struct queue *krnl_run_queue;				/*!< pointer to a queue of best effort tasks */
 struct queue *krnl_delay_queue;				/*!< pointer to a queue of delayed tasks */
 struct queue *krnl_rt_queue;				/*!< pointer to a queue of real time tasks */
 struct queue *krnl_event_queue;				/*!< pointer to a queue of tasks waiting for an event */
+struct queue *krnl_ap_queue;				/*!< ADICIONADO POR NOS: ponteiro para a fila de tarefas aperiodicas */
 uint8_t krnl_heap[HEAP_SIZE];				/*!< contiguous heap memory area to be used as a memory pool. the memory allocator (malloc() and free()) controls this data structure */
 uint32_t krnl_free;					/*!< amount of free heap memory, in bytes */
