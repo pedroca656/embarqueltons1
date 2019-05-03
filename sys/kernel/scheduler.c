@@ -294,7 +294,7 @@ int32_t sched_rma(void)
 //ADICIONADO POR NOS: escalonador de tarefas aperiodicas
 int32_t sched_ap(void)
 {
-	int32_t i, j, k;
+	int32_t i, k;
 	uint16_t id = 0;
 	//struct tcb_entry *e1, *e2; //COMENTADO POR NOS: nao eh usado
 
