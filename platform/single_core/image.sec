@@ -3,23 +3,23 @@ image.elf:     file format elf32-bigmips
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00002e04  40000000  40000000  00001000  2**2
+  0 .text         00003014  40000000  40000000  00001000  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .rodata       000009d4  40002e04  40002e04  00003e04  2**2
+  1 .rodata       00000a28  40003014  40003014  00004014  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  2 .MIPS.abiflags 00000018  400037d8  400037d8  000047d8  2**3
+  2 .MIPS.abiflags 00000018  40003a40  40003a40  00004a40  2**3
                   CONTENTS, ALLOC, LOAD, READONLY, DATA, LINK_ONCE_SAME_SIZE
-  3 .rel.dyn      000001d0  400037f0  400037f0  000047f0  2**2
+  3 .rel.dyn      000001d0  40003a58  40003a58  00004a58  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  4 .data         00000080  400039c0  400039c0  000049c0  2**2
+  4 .data         00000078  40003c28  40003c28  00004c28  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  5 .bss          0007b3c0  40003a40  40003a40  00004a40  2**3
+  5 .bss          0007b3c0  40003ca0  40003ca0  00004ca0  2**3
                   ALLOC
-  6 .scommon      00000030  4007ee00  4007ee00  00004a40  2**2
+  6 .scommon      00000030  4007f060  4007f060  00004ca0  2**2
                   ALLOC
-  7 .reginfo      00000018  00000000  00000000  00004a40  2**2
+  7 .reginfo      00000018  00000000  00000000  00004ca0  2**2
                   CONTENTS, READONLY, LINK_ONCE_SAME_SIZE
-  8 .comment      00000011  00000000  00000000  00004a58  2**0
+  8 .comment      00000011  00000000  00000000  00004cb8  2**0
                   CONTENTS, READONLY
-  9 .gnu.attributes 00000010  00000000  00000000  00004a69  2**0
+  9 .gnu.attributes 00000010  00000000  00000000  00004cc9  2**0
                   CONTENTS, READONLY

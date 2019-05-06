@@ -21,6 +21,7 @@
 #include <kernel.h>
 #include <panic.h>
 #include <scheduler.h>
+#include <task.h>
 
 static void process_delay_queue(void)
 {
@@ -69,6 +70,7 @@ static void ap_queue_next()
 		panic(PANIC_NO_TASKS_AP);
 	/*if (hf_queue_addtail(krnl_ap_queue, krnl_task)) COMENTADO POR NOS: tarefas aperiodicas nao devem voltar para o fim da fila
 		panic(PANIC_CANT_PLACE_AP);*/
+	//hf_kill(krnl_task->id);
 }
 
 
