@@ -65,12 +65,12 @@ static void rt_queue_next()
 //ADICIONADO POR NOS: move a fila
 static void ap_queue_next()
 {
-	krnl_task = hf_queue_remhead(krnl_ap_queue);
-	if (!krnl_task)
-		panic(PANIC_NO_TASKS_AP);
+	krnl_task = hf_queue_get(krnl_ap_queue, 0);
+	// if (!krnl_task)
+	// 	panic(PANIC_NO_TASKS_AP);
 	/*if (hf_queue_addtail(krnl_ap_queue, krnl_task)) COMENTADO POR NOS: tarefas aperiodicas nao devem voltar para o fim da fila
 		panic(PANIC_CANT_PLACE_AP);*/
-	//hf_kill(krnl_task->id);
+	hf_kill(krnl_task->id);
 }
 
 

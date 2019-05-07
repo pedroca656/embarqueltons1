@@ -410,13 +410,10 @@ Discarded input sections
                 0x0000000000000000       0x94 task.o
  .text.hf_priorityget
                 0x0000000000000000       0x80 task.o
- .text.hf_yield
-                0x0000000000000000      0x1d4 task.o
  .text.hf_block
                 0x0000000000000000      0x16c task.o
  .text.hf_resume
                 0x0000000000000000      0x170 task.o
- .text.hf_kill  0x0000000000000000      0x440 task.o
  .text.hf_delay
                 0x0000000000000000      0x304 task.o
 
@@ -433,7 +430,7 @@ Linker script and memory map
                 0x000000004ffffffc                _stack = 0x4ffffffc
                 0x0000000000000000                . = 0x0
 
-.text           0x0000000040000000     0x3014
+.text           0x0000000040000000     0x3618
  *(.text.init)
                 0x0000000040000000                _text = .
  *(.text)
@@ -665,119 +662,124 @@ Linker script and memory map
                 0x000000004000278c      0x240 scheduler.o
                 0x000000004000278c                sched_rma
  .text.sched_ap
-                0x00000000400029cc      0x144 scheduler.o
+                0x00000000400029cc      0x134 scheduler.o
                 0x00000000400029cc                sched_ap
  .text.hf_selfid
-                0x0000000040002b10       0x38 task.o
-                0x0000000040002b10                hf_selfid
+                0x0000000040002b00       0x38 task.o
+                0x0000000040002b00                hf_selfid
  .text.hf_selfname
-                0x0000000040002b48       0x38 task.o
-                0x0000000040002b48                hf_selfname
- .text.hf_jobs  0x0000000040002b80       0xa8 task.o
-                0x0000000040002b80                hf_jobs
- .text.hf_dlm   0x0000000040002c28       0x74 task.o
-                0x0000000040002c28                hf_dlm
+                0x0000000040002b38       0x38 task.o
+                0x0000000040002b38                hf_selfname
+ .text.hf_jobs  0x0000000040002b70       0xa8 task.o
+                0x0000000040002b70                hf_jobs
+ .text.hf_dlm   0x0000000040002c18       0x74 task.o
+                0x0000000040002c18                hf_dlm
  .text.hf_spawn
-                0x0000000040002c9c      0x378 task.o
-                0x0000000040002c9c                hf_spawn
-                0x0000000040003014                _etext = .
+                0x0000000040002c8c      0x378 task.o
+                0x0000000040002c8c                hf_spawn
+ .text.hf_yield
+                0x0000000040003004      0x1d4 task.o
+                0x0000000040003004                hf_yield
+ .text.hf_kill  0x00000000400031d8      0x440 task.o
+                0x00000000400031d8                hf_kill
+                0x0000000040003618                _etext = .
 
-.rodata         0x0000000040003014      0xa28
-                0x0000000040003014                _rodata = .
+.rodata         0x0000000040003618      0xa28
+                0x0000000040003618                _rodata = .
  *(.rodata)
  *(.rodata.*)
  .rodata.str1.4
-                0x0000000040003014       0xb7 hal.o
+                0x0000000040003618       0xb7 hal.o
                                          0xc3 (size before relaxing)
- *fill*         0x00000000400030cb        0x1 
+ *fill*         0x00000000400036cf        0x1 
  .rodata.str1.4
-                0x00000000400030cc       0x3a interrupt.o
- *fill*         0x0000000040003106        0x2 
- .rodata.irq0_handler
-                0x0000000040003108       0x84 interrupt.o
- .rodata.str1.4
-                0x000000004000318c       0x1f kprintf.o
- *fill*         0x00000000400031ab        0x1 
- .rodata.str1.4
-                0x00000000400031ac       0x63 libc.o
-                                         0x77 (size before relaxing)
- *fill*         0x000000004000320f        0x1 
- .rodata.vsprintf
-                0x0000000040003210       0x84 libc.o
- .rodata.str1.4
-                0x0000000040003294      0x184 main.o
- .rodata.str1.4
-                0x0000000040003418      0x20c panic.o
- .rodata.panic  0x0000000040003624       0x44 panic.o
- .rodata.str1.4
-                0x0000000040003668       0x62 processor.o
- *fill*         0x00000000400036ca        0x2 
- .rodata.str1.4
-                0x00000000400036cc       0x3e sched_test2.o
+                0x00000000400036d0       0x3a interrupt.o
  *fill*         0x000000004000370a        0x2 
+ .rodata.irq0_handler
+                0x000000004000370c       0x84 interrupt.o
  .rodata.str1.4
-                0x000000004000370c       0x21 scheduler.o
- *fill*         0x000000004000372d        0x3 
+                0x0000000040003790       0x1f kprintf.o
+ *fill*         0x00000000400037af        0x1 
  .rodata.str1.4
-                0x0000000040003730      0x30c task.o
+                0x00000000400037b0       0x63 libc.o
+                                         0x77 (size before relaxing)
+ *fill*         0x0000000040003813        0x1 
+ .rodata.vsprintf
+                0x0000000040003814       0x84 libc.o
+ .rodata.str1.4
+                0x0000000040003898      0x184 main.o
+ .rodata.str1.4
+                0x0000000040003a1c      0x20c panic.o
+ .rodata.panic  0x0000000040003c28       0x44 panic.o
+ .rodata.str1.4
+                0x0000000040003c6c       0x62 processor.o
+ *fill*         0x0000000040003cce        0x2 
+ .rodata.str1.4
+                0x0000000040003cd0       0x3e sched_test2.o
+ *fill*         0x0000000040003d0e        0x2 
+ .rodata.str1.4
+                0x0000000040003d10       0x21 scheduler.o
+ *fill*         0x0000000040003d31        0x3 
+ .rodata.str1.4
+                0x0000000040003d34      0x30c task.o
                                         0x31f (size before relaxing)
-                0x0000000040003a3c                _erodata = .
+                0x0000000040004040                _erodata = .
 
-.MIPS.abiflags  0x0000000040003a40       0x18
+.MIPS.abiflags  0x0000000040004040       0x18
  .MIPS.abiflags
-                0x0000000040003a40       0x18 condvar.o
+                0x0000000040004040       0x18 condvar.o
 
-.rel.dyn        0x0000000040003a58      0x1d0
- .rel.dyn       0x0000000040003a58      0x1d0 interrupt.o
+.rel.dyn        0x0000000040004058      0x1d0
+ .rel.dyn       0x0000000040004058      0x1d0 interrupt.o
 
-.data           0x0000000040003c28       0x78
-                0x0000000040003c28                _data = .
+.data           0x0000000040004228       0x78
+                0x0000000040004228                _data = .
  *(.data)
  *(.data.*)
  .data.timer_vector
-                0x0000000040003c28       0x40 interrupt.o
-                0x0000000040003c28                timer_vector
+                0x0000000040004228       0x40 interrupt.o
+                0x0000000040004228                timer_vector
  .data.gpio_vector
-                0x0000000040003c68       0x10 interrupt.o
-                0x0000000040003c68                gpio_vector
+                0x0000000040004268       0x10 interrupt.o
+                0x0000000040004268                gpio_vector
  .data.irq_vector
-                0x0000000040003c78       0x20 interrupt.o
-                0x0000000040003c78                irq_vector
- .data.rand1    0x0000000040003c98        0x4 libc.o
+                0x0000000040004278       0x20 interrupt.o
+                0x0000000040004278                irq_vector
+ .data.rand1    0x0000000040004298        0x4 libc.o
  .data.oops.1301
-                0x0000000040003c9c        0x4 main.o
-                0x000000004000bc90                _gp = (. + 0x7ff0)
+                0x000000004000429c        0x4 main.o
+                0x000000004000c290                _gp = (. + 0x7ff0)
  *(.sdata)
  *(.sdata.*)
-                0x0000000040003ca0                . = ALIGN (0x10)
-                0x0000000040003ca0                _edata = .
+                0x00000000400042a0                . = ALIGN (0x10)
+                0x00000000400042a0                _edata = .
 
-.bss            0x0000000040003ca0    0x7b3c0
-                0x0000000040003ca0                _bss_start = .
+.bss            0x00000000400042a0    0x7b3c0
+                0x00000000400042a0                _bss_start = .
  *(.sbss)
  *(.sbss.*)
  *(.bss)
  *(.bss.*)
  .bss.timeref.1523
-                0x0000000040003ca0        0x8 hal.o
+                0x00000000400042a0        0x8 hal.o
  .bss.tval2.1524
-                0x0000000040003ca8        0x4 hal.o
+                0x00000000400042a8        0x4 hal.o
  .bss.tref.1525
-                0x0000000040003cac        0x4 hal.o
+                0x00000000400042ac        0x4 hal.o
  .bss.lastcount.1516
-                0x0000000040003cb0        0x4 hal.o
+                0x00000000400042b0        0x4 hal.o
  .bss.timecount.1515
-                0x0000000040003cb4        0x4 hal.o
- .bss.buf.1131  0x0000000040003cb8       0x20 kprintf.o
+                0x00000000400042b4        0x4 hal.o
+ .bss.buf.1131  0x00000000400042b8       0x20 kprintf.o
  .bss.krnl_malloc
-                0x0000000040003cd8        0x4 malloc.o
-                0x0000000040003cdc                . = ALIGN (0x4)
-                0x0000000040003cdc                _bss_end = .
- COMMON         0x0000000040003cdc    0x7b384 condvar.o
-                0x0000000040003cdc                krnl_tcb
-                0x0000000040004f24                krnl_heap
-                0x000000004007f044                krnl_pcb
-                0x000000004007f060                _end = .
+                0x00000000400042d8        0x4 malloc.o
+                0x00000000400042dc                . = ALIGN (0x4)
+                0x00000000400042dc                _bss_end = .
+ COMMON         0x00000000400042dc    0x7b384 condvar.o
+                0x00000000400042dc                krnl_tcb
+                0x0000000040005524                krnl_heap
+                0x000000004007f644                krnl_pcb
+                0x000000004007f660                _end = .
 LOAD condvar.o
 LOAD crc.o
 LOAD crt0.o
@@ -800,21 +802,21 @@ LOAD semaphore.o
 LOAD task.o
 OUTPUT(image.elf elf32-bigmips)
 
-.scommon        0x000000004007f060       0x30
- .scommon       0x000000004007f060       0x28 condvar.o
-                0x000000004007f060                krnl_current_task
-                0x000000004007f064                krnl_task
-                0x000000004007f068                krnl_event_queue
-                0x000000004007f06c                krnl_tasks
-                0x000000004007f070                krnl_ap_queue
-                0x000000004007f074                krnl_free
-                0x000000004007f078                krnl_run_queue
-                0x000000004007f07c                krnl_rt_queue
-                0x000000004007f080                krnl_schedule
-                0x000000004007f084                krnl_delay_queue
- .scommon       0x000000004007f088        0x8 eth_enc28j60.o
-                0x000000004007f088                last_free
-                0x000000004007f08c                first_free
+.scommon        0x000000004007f660       0x30
+ .scommon       0x000000004007f660       0x28 condvar.o
+                0x000000004007f660                krnl_current_task
+                0x000000004007f664                krnl_task
+                0x000000004007f668                krnl_event_queue
+                0x000000004007f66c                krnl_tasks
+                0x000000004007f670                krnl_ap_queue
+                0x000000004007f674                krnl_free
+                0x000000004007f678                krnl_run_queue
+                0x000000004007f67c                krnl_rt_queue
+                0x000000004007f680                krnl_schedule
+                0x000000004007f684                krnl_delay_queue
+ .scommon       0x000000004007f688        0x8 eth_enc28j60.o
+                0x000000004007f688                last_free
+                0x000000004007f68c                first_free
 
 .reginfo        0x0000000000000000       0x18
  .reginfo       0x0000000000000000       0x18 condvar.o
