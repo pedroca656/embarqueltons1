@@ -1,0 +1,245 @@
+rm -rf *.o *~ *.elf *.bin *.cnt *.lst *.sec *.txt *.map
+mips-elf-as -mips1 -msoft-float -o crt0.o /home/user/Desktop/embarqueltons1/platform/single_core/../../arch/mips/hf-risc/boot/crt0.s
+mips-elf-gcc -Wall -O2 -c -mips2 -mno-branch-likely -mpatfree -mfix-r4000 -mno-check-zero-division -msoft-float -ffreestanding -nostdlib -fomit-frame-pointer -G 0 -I /home/user/Desktop/embarqueltons1/platform/single_core/../../arch/mips/hf-risc/include -I /home/user/Desktop/embarqueltons1/platform/single_core/../../lib/include -I /home/user/Desktop/embarqueltons1/platform/single_core/../../sys/include -DCPU_SPEED=25000000 -DTIME_SLICE=0 -DBIG_ENDIAN -mnohwmult -mnohwdiv -ffixed-lo -ffixed-hi -DKERN_VER=\"v2.19.03\" -fdata-sections -ffunction-sections  -DCPU_ARCH=\"mips/hf-risc\" -DMAX_TASKS=30 -DMEM_ALLOC=3 -DHEAP_SIZE=500000 -DMUTEX_TYPE=0 -DFLOATING_POINT=1 -DKERNEL_LOG=2 -DTERM_BAUD=57600 \
+        /home/user/Desktop/embarqueltons1/platform/single_core/../../arch/mips/hf-risc/drivers/interrupt.c \
+        /home/user/Desktop/embarqueltons1/platform/single_core/../../arch/mips/hf-risc/drivers/hal.c \
+        /home/user/Desktop/embarqueltons1/platform/single_core/../../arch/mips/hf-risc/drivers/eth_enc28j60.c
+mips-elf-gcc -Wall -O2 -c -mips2 -mno-branch-likely -mpatfree -mfix-r4000 -mno-check-zero-division -msoft-float -ffreestanding -nostdlib -fomit-frame-pointer -G 0 -I /home/user/Desktop/embarqueltons1/platform/single_core/../../arch/mips/hf-risc/include -I /home/user/Desktop/embarqueltons1/platform/single_core/../../lib/include -I /home/user/Desktop/embarqueltons1/platform/single_core/../../sys/include -DCPU_SPEED=25000000 -DTIME_SLICE=0 -DBIG_ENDIAN -mnohwmult -mnohwdiv -ffixed-lo -ffixed-hi -DKERN_VER=\"v2.19.03\" -fdata-sections -ffunction-sections  -DCPU_ARCH=\"mips/hf-risc\" -DMAX_TASKS=30 -DMEM_ALLOC=3 -DHEAP_SIZE=500000 -DMUTEX_TYPE=0 -DFLOATING_POINT=1 -DKERNEL_LOG=2 -DTERM_BAUD=57600 \
+        /home/user/Desktop/embarqueltons1/platform/single_core/../../lib/libc/libc.c \
+        /home/user/Desktop/embarqueltons1/platform/single_core/../../lib/libc/math.c \
+        /home/user/Desktop/embarqueltons1/platform/single_core/../../lib/misc/crc.c
+mips-elf-gcc -Wall -O2 -c -mips2 -mno-branch-likely -mpatfree -mfix-r4000 -mno-check-zero-division -msoft-float -ffreestanding -nostdlib -fomit-frame-pointer -G 0 -I /home/user/Desktop/embarqueltons1/platform/single_core/../../arch/mips/hf-risc/include -I /home/user/Desktop/embarqueltons1/platform/single_core/../../lib/include -I /home/user/Desktop/embarqueltons1/platform/single_core/../../sys/include -DCPU_SPEED=25000000 -DTIME_SLICE=0 -DBIG_ENDIAN -mnohwmult -mnohwdiv -ffixed-lo -ffixed-hi -DKERN_VER=\"v2.19.03\" -fdata-sections -ffunction-sections  -DCPU_ARCH=\"mips/hf-risc\" -DMAX_TASKS=30 -DMEM_ALLOC=3 -DHEAP_SIZE=500000 -DMUTEX_TYPE=0 -DFLOATING_POINT=1 -DKERNEL_LOG=2 -DTERM_BAUD=57600 \
+        /home/user/Desktop/embarqueltons1/platform/single_core/../../sys/lib/kprintf.c \
+        /home/user/Desktop/embarqueltons1/platform/single_core/../../sys/lib/malloc.c \
+        /home/user/Desktop/embarqueltons1/platform/single_core/../../sys/kernel/panic.c \
+        /home/user/Desktop/embarqueltons1/platform/single_core/../../sys/sync/mutex.c \
+        /home/user/Desktop/embarqueltons1/platform/single_core/../../sys/sync/semaphore.c \        /home/user/Desktop/embarqueltons1/platform/single_core/../../sys/sync/condvar.c \
+        /home/user/Desktop/embarqueltons1/platform/single_core/../../sys/lib/queue.c \
+        /home/user/Desktop/embarqueltons1/platform/single_core/../../sys/lib/list.c \
+        /home/user/Desktop/embarqueltons1/platform/single_core/../../sys/kernel/task.c \
+        /home/user/Desktop/embarqueltons1/platform/single_core/../../sys/kernel/scheduler.c \
+        /home/user/Desktop/embarqueltons1/platform/single_core/../../sys/kernel/processor.c \
+        /home/user/Desktop/embarqueltons1/platform/single_core/../../sys/kernel/main.c
+mips-elf-gcc -Wall -O2 -c -mips2 -mno-branch-likely -mpatfree -mfix-r4000 -mno-check-zero-division -msoft-float -ffreestanding -nostdlib -fomit-frame-pointer -G 0 -I /home/user/Desktop/embarqueltons1/platform/single_core/../../arch/mips/hf-risc/include -I /home/user/Desktop/embarqueltons1/platform/single_core/../../lib/include -I /home/user/Desktop/embarqueltons1/platform/single_core/../../sys/include -DCPU_SPEED=25000000 -DTIME_SLICE=0 -DBIG_ENDIAN -mnohwmult -mnohwdiv -ffixed-lo -ffixed-hi -DKERN_VER=\"v2.19.03\" -fdata-sections -ffunction-sections  -DCPU_ARCH=\"mips/hf-risc\" -DMAX_TASKS=30 -DMEM_ALLOC=3 -DHEAP_SIZE=500000 -DMUTEX_TYPE=0 -DFLOATING_POINT=1 -DKERNEL_LOG=2 -DTERM_BAUD=57600 \
+        /home/user/Desktop/embarqueltons1/platform/single_core/../../app/sched_test2/sched_test2.c 
+/home/user/Desktop/embarqueltons1/platform/single_core/../../app/sched_test2/sched_test2.c: In function ‘genAPTask’:
+/home/user/Desktop/embarqueltons1/platform/single_core/../../app/sched_test2/sched_test2.c:18:16: warning: unused variable ‘id’ [-Wunused-variable]
+  int32_t jobs, id;
+                ^
+/home/user/Desktop/embarqueltons1/platform/single_core/../../app/sched_test2/sched_test2.c:18:10: warning: unused variable ‘jobs’ [-Wunused-variable]
+  int32_t jobs, id;
+          ^
+mips-elf-ld  -mips1 --gc-sections -T/home/user/Desktop/embarqueltons1/platform/single_core/../../arch/mips/hf-risc/hf-risc.ld -Map image.map -o image.elf *.o
+mips-elf-objdump --disassemble --reloc image.elf > image.lst
+mips-elf-objdump -h image.elf > image.sec
+mips-elf-objdump -s image.elf > image.cnt
+mips-elf-objcopy -O binary image.elf image.bin
+mips-elf-size image.elf
+   text    data     bss     dec     hex filename
+  16936     120  504816  521872   7f690 image.elf
+hexdump -v -e '4/1 "%02x" "\n"' image.bin > image.txt
+user@debian:~/Desktop/embarqueltons1/platform/single_core$ ../../usr/sim/hf_risc_sim/hf_risc_sim image.bin log.txt
+
+KERNEL: booting...
+===========================================================
+HellfireOS v2.19.03 (4.9.3) [May  7 2019, 10:05:55]
+Embedded Systems Group - GSE, PUCRS - [2007 - 2018]
+===========================================================
+
+arch:          mips/hf-risc
+sys clk:       25000 kHz
+heap size:     500000 bytes
+max tasks:     30
+
+HAL: _vm_init()
+HAL: _sched_init()
+HAL: _timer_init()
+HAL: _irq_init()
+HAL: _device_init()
+HAL: _task_init()
+KERNEL: [idle task], id: 0, p:0, c:0, d:0, addr: 400002a8, sp: 40005ba8, ss: 1024 bytes
+KERNEL: [task RT a], id: 1, p:4, c:1, d:4, addr: 40002144, sp: 400063b0, ss: 2048 bytesPeriodo > 0: 4
+KERNEL: [task RT b], id: 2, p:8, c:2, d:8, addr: 40002144, sp: 40006bb8, ss: 2048 bytesPeriodo > 0: 8
+KERNEL: [task RT c], id: 3, p:0, c:0, d:0, addr: 400021fc, sp: 400073c0, ss: 2048 bytes
+KERNEL: free heap: 492144 bytes
+KERNEL: HellfireOS is up
+
+task RT a (1)[1][0]
+task RT a (1)[1][0]
+task RT b (2)[1][0]
+task RT b (2)[1][0]
+task RT b (2)[2][0]
+task RT a (1)[2][0]
+task RT a (1)[3][0]
+task RT b (2)[3][0]
+task RT b (2)[4][0]
+task RT a (1)[4][0]
+task RT a (1)[5][0]
+task RT b (2)[5][0]
+task RT b (2)[6][0]
+task RT a (1)[6][0]
+task RT a (1)[7][0]
+task RT b (2)[7][0]
+task RT b (2)[8][0]
+task RT a (1)[8][0]
+task RT a (1)[9][0]
+task RT b (2)[9][0]
+task RT b (2)[10][0]
+task RT a (1)[10][0]
+task RT a (1)[11][0]
+task RT b (2)[11][0]
+task RT b (2)[12][0]
+task RT a (1)[12][0]
+task RT a (1)[13][0]
+task RT b (2)[13][0]
+task RT b (2)[14][0]
+KERNEL: [Task AP], id: 4, p:0, c:3, d:0, addr: 40002144, sp: 40007bc8, ss: 2048 bytesCapacidade: 3
+task RT a (1)[14][0]
+KERNEL: task died, id: 4, tasks left: 4
+task RT a (1)[15][0]
+task RT b (2)[15][0]
+task RT b (2)[16][0]
+KERNEL: [Task AP], id: 4, p:0, c:3, d:0, addr: 40002144, sp: 40007bc8, ss: 2048 bytesCapacidade: 3
+task RT a (1)[16][0]
+KERNEL: task died, id: 4, tasks left: 4
+task RT a (1)[17][0]
+task RT b (2)[17][0]
+task RT b (2)[18][0]
+task RT a (1)[18][0]
+task RT a (1)[19][0]
+task RT b (2)[19][0]
+task RT b (2)[20][0]
+task RT a (1)[20][0]
+task RT a (1)[21][0]
+task RT b (2)[21][0]
+task RT b (2)[22][0]
+task RT a (1)[22][0]
+task RT a (1)[23][0]
+task RT b (2)[23][0]
+task RT b (2)[24][0]
+task RT a (1)[24][0]
+task RT a (1)[25][0]
+task RT b (2)[25][0]
+task RT b (2)[26][0]
+task RT a (1)[26][0]
+KERNEL: [Task AP], id: 4, p:0, c:3, d:0, addr: 40002144, sp: 40007bc8, ss: 2048 bytesCapacidade: 3
+KERNEL: task died, id: 4, tasks left: 4
+task RT a (1)[27][0]
+task RT b (2)[27][0]
+task RT b (2)[28][0]
+task RT a (1)[28][0]
+task RT a (1)[29][0]
+task RT b (2)[29][0]
+task RT b (2)[30][0]
+task RT a (1)[30][0]
+task RT a (1)[31][0]
+task RT b (2)[31][0]
+task RT b (2)[32][0]
+KERNEL: [Task AP], id: 4, p:0, c:3, d:0, addr: 40002144, sp: 40007bc8, ss: 2048 bytesCapacidade: 3
+task RT a (1)[32][0]
+KERNEL: task died, id: 4, tasks left: 4
+task RT a (1)[33][0]
+task RT b (2)[33][0]
+task RT b (2)[34][0]
+task RT a (1)[34][0]
+task RT a (1)[35][0]
+task RT b (2)[35][0]
+task RT b (2)[36][0]
+KERNEL: [Task AP], id: 4, p:0, c:3, d:0, addr: 40002144, sp: 40007bc8, ss: 2048 bytesCapacidade: 3
+task RT a (1)[36][0]
+KERNEL: task died, id: 4, tasks left: 4
+task RT a (1)[37][0]
+task RT b (2)[37][0]
+task RT b (2)[38][0]
+KERNEL: [Task AP], id: 4, p:0, c:3, d:0, addr: 40002144, sp: 40007bc8, ss: 2048 bytesCapacidade: 3
+task RT a (1)[38][0]
+KERNEL: task died, id: 4, tasks left: 4
+task RT a (1)[39][0]
+task RT b (2)[39][0]
+task RT b (2)[40][0]
+task RT a (1)[40][0]
+task RT a (1)[41][0]
+task RT b (2)[41][0]
+task RT b (2)[42][0]
+task RT a (1)[42][0]
+task RT a (1)[43][0]
+task RT b (2)[43][0]
+task RT b (2)[44][0]
+task RT a (1)[44][0]
+KERNEL: [Task AP], id: 4, p:0, c:3, d:0, addr: 40002144, sp: 40007bc8, ss: 2048 bytesCapacidade: 3
+KERNEL: task died, id: 4, tasks left: 4
+task RT a (1)[45][0]
+task RT b (2)[45][0]
+task RT b (2)[46][0]
+task RT a (1)[46][0]
+task RT a (1)[47][0]
+task RT b (2)[47][0]
+task RT b (2)[48][0]
+KERNEL: [Task AP], id: 4, p:0, c:3, d:0, addr: 40002144, sp: 40007bc8, ss: 2048 bytesCapacidade: 3
+task RT a (1)[48][0]
+KERNEL: task died, id: 4, tasks left: 4
+task RT a (1)[49][0]
+task RT b (2)[49][0]
+task RT b (2)[50][0]
+task RT a (1)[50][0]
+task RT a (1)[51][0]
+task RT b (2)[51][0]
+task RT b (2)[52][0]
+KERNEL: [Task AP], id: 4, p:0, c:3, d:0, addr: 40002144, sp: 40007bc8, ss: 2048 bytesCapacidade: 3
+task RT a (1)[52][0]
+KERNEL: task died, id: 4, tasks left: 4
+task RT a (1)[53][0]
+task RT b (2)[53][0]
+task RT b (2)[54][0]
+task RT a (1)[54][0]
+task RT a (1)[55][0]
+task RT b (2)[55][0]
+task RT b (2)[56][0]
+task RT a (1)[56][0]
+task RT a (1)[57][0]
+task RT b (2)[57][0]
+task RT b (2)[58][0]
+KERNEL: [Task AP], id: 4, p:0, c:3, d:0, addr: 40002144, sp: 40007bc8, ss: 2048 bytesCapacidade: 3
+task RT a (1)[58][0]
+KERNEL: task died, id: 4, tasks left: 4
+task RT a (1)[59][0]
+task RT b (2)[59][0]
+task RT b (2)[60][0]
+task RT a (1)[60][0]
+task RT a (1)[61][0]
+task RT b (2)[61][0]
+task RT b (2)[62][0]
+task RT a (1)[62][0]
+task RT a (1)[63][0]
+task RT b (2)[63][0]
+task RT b (2)[64][0]
+task RT a (1)[64][0]
+task RT a (1)[65][0]
+task RT b (2)[65][0]
+task RT b (2)[66][0]
+task RT a (1)[66][0]
+task RT a (1)[67][0]
+task RT b (2)[67][0]
+task RT b (2)[68][0]
+task RT a (1)[68][0]
+KERNEL: [Task AP], id: 4, p:0, c:3, d:0, addr: 40002144, sp: 40007bc8, ss: 2048 bytesCapacidade: 3
+KERNEL: task died, id: 4, tasks left: 4
+task RT a (1)[69][0]
+task RT b (2)[69][0]
+task RT b (2)[70][0]
+task RT a (1)[70][0]
+task RT a (1)[71][0]
+task RT b (2)[71][0]
+task RT b (2)[72][0]
+task RT a (1)[72][0]
+task RT a (1)[73][0]
+task RT b (2)[73][0]
+task RT b (2)[74][0]
+task RT a (1)[74][0]
+KERNEL: [Task AP], id: 4, p:0, c:3, d:0, addr: 40002144, sp: 40007bc8, ss: 2048 bytesCapacidade: 3
+KERNEL: task died, id: 4, tasks left: 4
+task RT a (1)[75][0]
+task RT b (2)[75][0]
+task RT b (2)[76][0]
+^C
+user@debian:~/Desktop/embarqueltons1/platform/single_core$ 
